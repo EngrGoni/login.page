@@ -4,30 +4,78 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login Page</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .link {
+      margin-top: 15px;
+      display: block;
+      color: #1877f2;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-  <div class="flex flex-col md:flex-row items-center justify-between max-w-5xl w-full px-4">
-    
-    <!-- Branding -->
-    <div class="md:w-1/2 mb-10 md:mb-0">
-      <h1 class="text-blue-600 text-5xl font-bold mb-4">MySocialApp</h1>
-      <p class="text-xl text-gray-700">Connect with people and the world around you.</p>
-    </div>
+<body>
 
-    <!-- Login Form -->
-    <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
-      <form action="https://formspree.io/f/xzzgznre" method="POST" class="flex flex-col space-y-4">
-        <input type="email" name="email" placeholder="Email" required
-               class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <input type="password" name="password" placeholder="Password" required
-               class="border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <button type="submit"
-                class="bg-blue-600 text-white py-2 rounded font-semibold hover:bg-blue-700 transition">
-          Log In
-        </button>
-      </form>
-    </div>
+  <div class="container">
+    <h2>Log In</h2>
+    <form id="login-form">
+      <input type="email" name="email" placeholder="Email address" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+    </form>
+    <a href="#" class="link">Forgot Password?</a>
+    <hr />
+    <a href="#" class="link" id="create-account">Create New Account</a>
   </div>
+
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      alert(result.message);
+    });
+  </script>
+
 </body>
 </html>
